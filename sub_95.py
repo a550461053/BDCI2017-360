@@ -329,9 +329,12 @@ def trick_yilonghao(pretrain_csv, input_csv, output_csv):
     print('diff numbers:', diff) # 2623 - 2649
                                   # 2495
 
+    # cnn:
+    # diff 1926
+
 trick_yilonghao(pretrain_csv='./BDCI2017-360/BDCI2017-360-Semi/evaluation_public.tsv',
-                input_csv=fasttext+'semi_test_predict1_res.csv',
-                output_csv=fasttext+'semi_test_predict1_res_trick1.csv')
+                input_csv='semi_test_cnn_res.csv',
+                output_csv='semi_test_cnn_res_trick1.csv')
 
 # 0.62282 -> 0.62717
 # 增加fasttext训练效果0.61143，反而降低，说明过拟合 或者没训练好

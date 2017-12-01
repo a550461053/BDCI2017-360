@@ -2,7 +2,6 @@
 
 '''
 简单预处理
-
 '''
 import jieba
 import re
@@ -125,6 +124,42 @@ def find_diff():
             file.writelines('\t'.join(line) + '\n')
     print('save test change!')
 
+
+
+#####################################
+
+fast_path = './result/'
+def pro_result_for_cnn(input_file, output_file):
+
+    with open('./BDCI2017-360/BDCI2017-360-Semi/evaluation_public_seg.tsv', 'r', encoding='utf-8') as old_file:
+        res_list = []
+        for line in old_file.readlines():
+            str_list = line.strip('\n').split('\t')
+            res_list.append(str_list[0])
+    with open(input_file, 'r', encoding='utf-8') as file:
+        res_label = []
+        count_pos = 0
+        for line in file.readlines():
+            if line.strip() == '0.0':
+                temp = 'NEGATIVE'
+                count_pos += 1
+            elif line.strip() == '1.0':
+                temp = 'POSITIVE'
+            else:
+                print('error:', line)
+            res_label.append(temp)
+    with open(output_file, 'w', encoding='utf-8') as save_file:
+        i = 0
+        for line in res_list:
+            print(i)
+            save_file.writelines(line + ',' + res_label[i] + '\n')
+            i += 1
+    print('the pos count:', count_pos)
+    print('the count:', i)
+    print('pos / count:', count_pos / i)
+pro_result_for_cnn(input_file='result',
+                        output_file='semi_test_cnn_res.csv')
+input()
 
 #########################################################################
 #  for fasttext                                                         #
@@ -463,4 +498,3 @@ def count_one_sentence():
 count_one_sentence()
 
 pass
-
