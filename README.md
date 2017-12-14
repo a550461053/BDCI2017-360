@@ -18,6 +18,13 @@
 ## 比赛结果
 1. 初赛19，score=0.8123
 2. 复赛21，score=0.66657
+3. 方案：
+	- 先使用fasttext没有pretrain的方法，0.60；
+	- 采用TextCNN+gensim的静态word2vec，0.66；
+	- 采用LSTM+gensim的静态word2vec，速度感人。。
+6. 小结：
+	- 这个比赛数据比较大，比nn的话就得看谁的机器好，不然跑的时间太久了~
+	- 加之学校任务比较重，一周两会，后面就做不动了。。
 
 ## 思路
 0. 360搜索题解
@@ -323,3 +330,5 @@
 	- 优化器 optimizer，GradientDescentOptimizer 不报错，RMSPropOptimizer，AdamOptimizer 会报错：
 		+ 因为 AdamOptimizer， RMSPropOptimizer 他们在内部会生成新的变量，所以 tf.initialize_all_variables() 应该在 optimizer 定义的后面再运行，不能在前面运行。
 4. nn如何进行融合：
+
+
