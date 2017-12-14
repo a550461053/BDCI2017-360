@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat Oct 14 20:56:14 2017
-
+初赛前半数据， 直接规则处理效果就不错了
 @author: Batista
 """
 
